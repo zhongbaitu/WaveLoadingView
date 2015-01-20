@@ -1,18 +1,17 @@
-Ğ§¹û£º
+##æ•ˆæœï¼š
 
------------
-
+---
 ![](http://zhongsir.qiniudn.com/2014-10-15%2Ftest.gif)
 
-Ê¹ÓÃ£º
+##ä½¿ç”¨ï¼š
 
 -----------
 
-ÔÚActivity onCreate()ÖĞĞ´
+åœ¨Activity onCreate()ä¸­å†™
 
 ```java
         mWaveLoadingView = new WaveLoadingView(this);
-	setContentView(mWaveLoadingView);
+        setContentView(mWaveLoadingView);
         mWaveLoadingView.setWaveColor(0xff0099CC)
                         .setTextColor(0xffFFFFFF)
                         .setTextSize(40)
@@ -23,12 +22,12 @@
         mWaveLoadingView.setOnFinishedListener(new WaveLoadingView.OnFinishedListener() {
             @Override
             public void onFinished() {
-                System.out.println("Íê³É");
+                System.out.println("å®Œæˆ");
             }
         });
 ```
 
-License
+##License
 
 -----------
 
