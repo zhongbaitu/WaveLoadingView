@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
  import android.view.View;
 
@@ -74,7 +76,6 @@ public class WaveLoadingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setPath();
         canvas.drawPath(path, wavePaint);
         String str = progress + "%";
@@ -196,6 +197,7 @@ public class WaveLoadingView extends View {
                 if (fai == 360) {
                     fai = 0;
                 }
+                mHandler.sendEmptyMessage(1);
                 try {
                     Thread.sleep(ms);
                 } catch (InterruptedException e) {
@@ -206,6 +208,15 @@ public class WaveLoadingView extends View {
         }
 
     }
+
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if(msg.what == 1){
+                invalidate();
+            }
+        }
+    };
 
     public interface OnFinishedListener {
         public void onFinished();
